@@ -1,41 +1,40 @@
 #include "core.h"
 
-#define OPTS "b:d:ho:"
+#define OPTIONS "b:d:ho:"
 
-int main(int argc, char* argv[]) {
-	if(argc == 1) {
+int main(int argc, char* argv[])
+{
+	if(argc == 1)
+	{
 		print_help();
-		// exit(1);
-		exit(0);
+		exit(EXIT_FAILURE);
 	}
-	int opt, domain;
 	opterr = 0; // disable `getopt` default error messages
-	char* addr_fam = "i4"; // default output type
-	while((opt = getopt(argc, argv, OPTS)) != -1) {
-		switch (opt) {
-			case 'b':
-				char* bin_form = optarg;
-				char* dec_form;
-				if(getopt(argc, argv, OPTS) == 'o')
-					addr_fam = optarg;
-				domain	=	(strcmp(addr_fam, "i4") == 0) ? AF_INET :
-							(strcmp(addr_fam, "i6") == 0) ? AF_INET6 : -1; // neither case to implement later
-				inet_pton(domain, bin_form, dec_form);
-				printf("%s\t%s\n", bin_form, dec_form);
+	char opt;
+	while((opt = getopt(argc, argv, OPTIONS)) != -1)
+	{
+		switch (opt)
+		{
+			case 'b':	/* get binary */
+				to_bin(optarg);
 				break;
-			/* case 'd':
-				printf("Binary: %s\n", to_bin(optarg));
-				break;*/
-			case 'h':
+	
+			case 'd':	/* get decimal */
+				log_msg("you chose 'd'");
+				break;
+		
+			case 'h':	/* print help */
 				print_help();
 				break;
+			
 			case '?':
-				fprintf(stderr, "%s: Invalid option\n", argv[0]);
+				fprintf(stderr, ANSI_CLR_RED "invalid option: %s\n" ANSI_CLR_RES, opt);
 				print_help();
 				break;
+			
 			default:
 				break;
 		}
 	}
-	return 0;
+	return EXIT_SUCCESS;
 }
