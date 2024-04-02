@@ -31,7 +31,7 @@ make uninstall
 ### usage
 
 > [!NOTE]
-> the only two options that works are **-b** and **-h**
+> the only two options that works are **-b** and **-h**<br>
 > **--bin** and **--help** are not working for now
 
 ```
