@@ -1,4 +1,4 @@
-#include "core.h"
+#include "core.c" // this is temporary - later we will build it with `make`
 
 #define OPTIONS "b:d:ho:"
 
@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
 	}
 	opterr = 0; // disable `getopt` default error messages
 	char opt;
-	while((opt = getopt(argc, argv, OPTIONS)) != -1)
+	while((opt = (char)getopt(argc, argv, OPTIONS)) != -1)
 	{
 		switch (opt)
 		{
@@ -28,7 +28,7 @@ int main(int argc, char* argv[])
 				break;
 			
 			case '?':
-				fprintf(stderr, ANSI_CLR_RED "invalid option: %s\n" ANSI_CLR_RES, opt);
+				fprintf(stderr,  "invalid option: %s %c %s\n" , ANSI_RED, optopt, ANSI_RES);
 				print_help();
 				break;
 			

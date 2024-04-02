@@ -10,51 +10,25 @@
 #define CMD_AUTH "karimelk"
 #define CMD_REPO "https://github.com/karimelkh/ip2bin)"
 
-#define ANSI_CLR_RED "\x1b[31m"
-#define ANSI_CLR_RES "\x1b[0m"
+#define M_OCT 255
+#define M_MASK 32
+
+#define ANSI_RED "\x1b[31m"
+#define ANSI_RES "\x1b[0m"
 
 #define BIN_STR_LEN 8
 
 // print help
-void print_help(void)
-{
-	printf("%s - %s\n\n%s\n\n%s\n%s\n%s\n", CMD_NAME, CMD_DESC, CMD_USAGE, CMD_VER, CMD_AUTH, CMD_REPO);
-}
+void print_help(void);
 
 // Print ERRor
-void
-perr(const char* err)
-{
-	fprintf(stderr, ANSI_CLR_RED "%s\n" ANSI_CLR_RES, err);
-}
+void perr(const char* err);
 
 // log message to stdout
-void
-log_msg(char* msg)
-{
-	printf("%s\n", msg);
-}
+void log_msg(char* msg);
 
 // decimal to binary string
-char*
-dtob(unsigned int dec)
-{
-	char* bin = (char*) malloc(sizeof(char) * BIN_STR_LEN + 1);
-	int cbit = BIN_STR_LEN - 1;
-	bin[BIN_STR_LEN] = '\0';
-	while(cbit >= 0)
-	{
-		bin[cbit--] = (dec % 2 == 0) ? '0' : '1';
-		dec = dec / 2;
-	}
-	return bin;
-}
+char* dtob(unsigned int dec);
 
 // decimal ipv4 to binary string
-void
-to_bin(char* dec_addr)
-{
-	unsigned int fst_oct, sec_oct, trd_oct, fth_oct, nmask;
-	sscanf(dec_addr, "%u.%u.%u.%u/%u", &fst_oct, &sec_oct, &trd_oct, &fth_oct, &nmask);
-	printf("%s\n%s.%s.%s.%s\n", dec_addr, dtob(fst_oct), dtob(sec_oct), dtob(trd_oct), dtob(fth_oct));
-}
+void to_bin(char* dec_addr);

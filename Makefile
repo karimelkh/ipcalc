@@ -1,6 +1,6 @@
 CC=gcc
 CF=-Wall -Wextra -Werror -Wpedantic -Wconversion
-SRC= src
+SRC=src
 BLD=build
 MAIN=main.c
 TARGET=ipcalc
@@ -8,6 +8,9 @@ IDIR=/usr/local/bin
 
 all:
 	$(CC) $(CF) -o $(BLD)/$(TARGET) $(SRC)/$(MAIN)
+
+init:
+	scripts/init.sh
 
 test:
 	$(CC) -o $(BLD)/$(TARGET) $(SRC)/$(MAIN)
@@ -24,4 +27,3 @@ install: all
 
 uninstall: clean
 	rm $(IDIR)/$(TARGET)
-
