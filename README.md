@@ -39,6 +39,9 @@ make uninstall
 -d,	--dec=BIN	convert binary to decimal
 -h,	--help		print this help
 ```
+**Notes:**
+* `-b` can be used multiple times in a single command
+* ...
 
 ## todo
 
