@@ -25,5 +25,5 @@ clean:
 install: all
 	cp $(BLD)/$(TARGET) $(IDIR)
 
-uninstall: clean
+uninstall:
 	rm $(IDIR)/$(TARGET)

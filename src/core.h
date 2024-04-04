@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <unistd.h>
+#include <getopt.h>
+// #include <unistd.h>
+#include <stdint.h>
 
 #define CMD_NAME "ipcalc"
 #define CMD_DESC "convert between decimal and binary versions of IPv4 and IPv6 addresses"
@@ -18,6 +20,9 @@
 
 #define BIN_STR_LEN 8
 
+#define CMP_IP(x, y) ((x.oct[0] == y.oct[0]) && (x.oct[1] == y.oct[1]) && (x.oct[2] == y.oct[2]) && (x.oct[3] == y.oct[3]))
+#define STR_IP(x) (x.oct[0], x.oct[1], x.oct[2], x.oct[3])
+
 // print help
 void print_help(void);
 
@@ -28,7 +33,16 @@ void perr(const char* err);
 void log_msg(char* msg);
 
 // decimal to binary string
-char* dtob(unsigned int dec);
+char* utob(unsigned int dec);
 
 // decimal ipv4 to binary string
-void to_bin(char* dec_addr);
+void get_bin(char* dec_addr);
+
+//
+// int mask_cmp(nmask fm, nmask sm);
+
+//
+// int addr_cmp(addr_ip f_addr, addr_ip s_addr);
+
+//
+
