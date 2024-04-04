@@ -47,7 +47,6 @@ make uninstall
 
 - [ ] Makefile:
 	- [ ] organize the dependancy graph
-
 - [ ] display:
     - [ ] network address
     - [ ] usable host ip range
@@ -65,10 +64,10 @@ make uninstall
     - [ ] all possible addresses for the ip address
     - [ ] table of the number of hosts per subnet
     - [ ] ...
-
 - [ ] use the [belformat](https://github.com/Artiom-Astashonak/belformat) library
-
-- [ ] ...
+- [ ] add some examples
+- [ ] make an `ip` struct
+- [ ] use `getopt_long` or `getopt_long_only` instead of `getopt`
 
 <!--
 don't forget to use
