@@ -1,6 +1,10 @@
 # ipcalc
 
 a cli tool for converting between decimal and binary versions of IPv4 and IPv6 addresses
+and do some operations on IP addresses, check [features](#features) for more info.
+
+## features
+**SOON**
 
 ## usage
 
