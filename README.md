@@ -32,7 +32,7 @@ make uninstall
 ```
 
 
-### usage
+### available options
 
 > [!NOTE]
 > the only two options that works are **-b** and **-h**<br>
