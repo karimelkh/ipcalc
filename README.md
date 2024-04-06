@@ -55,6 +55,7 @@ make uninstall
     - [ ] network address
 		- [ ] finish implementing `is_net()`
 		- [ ] integrate `is_net()` in the program
+		- [ ] add options: `--isnet`, `--isint`
     - [ ] usable host ip range
     - [ ] broadcast address
     - [ ] total number of hosts
