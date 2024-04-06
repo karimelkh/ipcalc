@@ -10,7 +10,7 @@ and do some operations on IP addresses, check [features](#features) for more inf
 
 ### requirements
 
-* **make** - to compile source code
+* **make** - to build source code
 * ...
 
 
@@ -35,17 +35,17 @@ make uninstall
 ### available options
 
 > [!NOTE]
-> the only two options that works are **-b** and **-h**<br>
-> **--bin** and **--help** are not working for now
+> the only two options that works are **-b** and **-h**
 
 ```
 -b,	--bin=DEC	convert decimal to binary
 -d,	--dec=BIN	convert binary to decimal
 -h,	--help		print this help
 ```
+
 **Notes:**
 * `-b` can be used multiple times in a single command
-* ...
+
 
 ## todo
 
@@ -53,6 +53,8 @@ make uninstall
 	- [ ] organize the dependancy graph
 - [ ] display:
     - [ ] network address
+		- [ ] finish implementing `is_net()`
+		- [ ] integrate `is_net()` in the program
     - [ ] usable host ip range
     - [ ] broadcast address
     - [ ] total number of hosts
@@ -67,21 +69,8 @@ make uninstall
     - [ ] short notation, ex: `192.168.1.1/24`
     - [ ] all possible addresses for the ip address
     - [ ] table of the number of hosts per subnet
-    - [ ] ...
 - [ ] use the [belformat](https://github.com/Artiom-Astashonak/belformat) library
 - [ ] add some examples
-- [ ] make an `ip` struct
-- [ ] use `getopt_long` or `getopt_long_only` instead of `getopt`
+- [X] make an `ip` struct
+- [X] use `getopt_long` or `getopt_long_only` instead of `getopt`
 
-<!--
-don't forget to use
-    * enums
-    * bitwise operators
-    * stdlib functions:
-        * sscanf
-        * 
-    * arpa/inet functions:
-        * inet_pton
-        * inet_nton
-        * 
--->

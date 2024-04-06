@@ -4,8 +4,8 @@
 
 static struct option long_options[] = {
 /*		name			has_arg					flag	val	*/
-	{	"help",			required_argument,		0,		'h'	},
-	{	"bin",			no_argument,			0,		'b'	},
+	{	"help",			no_argument,		NULL,		'h'	},
+	{	"bin",			required_argument,	NULL,		'b'	},
 //	{	"delete",		required_argument,		0,		0	},
 //	{	"verbose",		no_argument,			0,		0	},
 //	{	"create",		required_argument,		0,		'c'	},
@@ -21,8 +21,7 @@ int main(int argc, char* argv[]) {
 	// addr_ip ia = { {105, 67, 5, 96}, {{255, 255, 255, 0}} };
 	opterr = 0; // disable `getopt` default error messages
 	char opt;
-	while((opt = (char)getopt(argc, argv, OPTIONS)) != -1) {
-	// while((opt = (char) getopt_long(argc, argv, OPTIONS, long_options, NULL)) != -1) {
+	while((opt = (char) getopt_long(argc, argv, OPTIONS, long_options, NULL)) != -1) {
 		switch (opt) {
 			case 'b':	/* get binary */
 				get_bin(optarg);
@@ -37,7 +36,7 @@ int main(int argc, char* argv[]) {
 				break;
 			
 			case '?':
-				fprintf(stderr,  "invalid option: %s %c %s\n" , ANSI_RED, optopt, ANSI_RES);
+				fprintf(stderr,  "invalid option: %s%c%s\n" , ANSI_RED, optopt, ANSI_RES);
 				print_help();
 				break;
 			

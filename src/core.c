@@ -71,7 +71,7 @@ int is_net(addr_ip ia) {
     result.oct[3] = ia.oct[3] & ia.mask.oct[3];
 
     // Check if the result is equal to the address itself
-    return CMP_IP(ia, result); // return 0 if it's an interface, 1 if it's a network
+    return CMP_OCT(ia, result); // return 0 if it's an interface, 1 if it's a network
 }
 
 void print_ip(addr_ip ia) {
