@@ -53,6 +53,7 @@ make uninstall
 	- [ ] organize the dependancy graph
 - [ ] display:
     - [ ] network address
+		- [ ] implement `to_ip()` (from string to ip_addr struct)
 		- [ ] finish implementing `is_net()`
 		- [ ] integrate `is_net()` in the program
 		- [ ] add options: `--isnet`, `--isint`
