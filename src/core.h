@@ -2,7 +2,6 @@
 #include <string.h>
 #include <stdlib.h>
 #include <getopt.h>
-// #include <unistd.h>
 #include <stdint.h>
 
 #define CMD_NAME "ipcalc"
@@ -38,8 +37,11 @@ char* utob(unsigned int dec);
 // decimal ipv4 to binary string
 void get_bin(char* dec_addr);
 
-//
-// int mask_cmp(nmask fm, nmask sm);
+int count_ones(unsigned int);
 
-//
-// int addr_cmp(addr_ip f_addr, addr_ip s_addr);
+// int is_net(addr_ip);
+
+// void print_ip(addr_ip);
+
+// addr_ip to_ip(char*);
+

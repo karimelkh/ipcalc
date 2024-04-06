@@ -1,10 +1,11 @@
 #include "core.h"
 
-typedef struct mask {
+typedef struct {
 	uint8_t oct[4];
+	uint8_t cidr;
 } nmask;
 
-typedef struct Addr_ip {
+typedef struct {
 	uint8_t oct[4];
 	nmask mask;
 } addr_ip;
@@ -44,9 +45,17 @@ void get_bin(char* dec_addr) {
 	printf("%s\n%s.%s.%s.%s\n", dec_addr, utob(fst_oct), utob(sec_oct), utob(trd_oct), utob(fth_oct));
 }
 
-int mask_cmp(nmask fm, nmask sm);
-int addr_cmp(addr_ip fa, addr_ip sa);
+int count_ones(unsigned int dec) {
+	int count = 0;
+    while (dec != 0) {
+        count += dec & 1;   // Add 1 if the last bit is 1
+        dec >>= 1;          // Shift the number right by 1
+    }
+    return count;
+}
 
+// WHY THIS ONE DIDN'T WORK
+//
 // check if an ipv4 address is for a network or for an interface
 // return 0 => interface address
 // return 1 => network address
@@ -62,6 +71,7 @@ int addr_cmp(addr_ip fa, addr_ip sa);
 	// return addr_cmp(ia, ia); // change `ia` to `result`
 	return CMP_IP(ia, result);
 }*/
+
 int is_net(addr_ip ia) {
     // Perform bitwise AND operation between the address and its mask
     nmask result;
@@ -77,3 +87,28 @@ int is_net(addr_ip ia) {
 void print_ip(addr_ip ia) {
 	printf("%u.%u.%u.%u", ia.oct[0], ia.oct[1], ia.oct[2], ia.oct[3]);
 }
+
+addr_ip to_addr_ip(char* str) {
+	addr_ip ip;
+	sscanf(str, "%hhu.%hhu.%hhu.%hhu/%hhu", ip.oct[0], ip.oct[1], ip.oct[2], ip.oct[3], ip.mask.cidr);
+	return ip;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

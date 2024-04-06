@@ -6,6 +6,8 @@ static struct option long_options[] = {
 /*		name			has_arg					flag	val	*/
 	{	"help",			no_argument,		NULL,		'h'	},
 	{	"bin",			required_argument,	NULL,		'b'	},
+	{	"isnet",		required_argument,	NULL,		'y'	},
+	{	"isint",		required_argument,	NULL,		'z'	},
 //	{	"delete",		required_argument,		0,		0	},
 //	{	"verbose",		no_argument,			0,		0	},
 //	{	"create",		required_argument,		0,		'c'	},
@@ -18,7 +20,6 @@ int main(int argc, char* argv[]) {
 		print_help();
 		exit(EXIT_FAILURE);
 	}
-	// addr_ip ia = { {105, 67, 5, 96}, {{255, 255, 255, 0}} };
 	opterr = 0; // disable `getopt` default error messages
 	char opt;
 	while((opt = (char) getopt_long(argc, argv, OPTIONS, long_options, NULL)) != -1) {
@@ -33,6 +34,14 @@ int main(int argc, char* argv[]) {
 		
 			case 'h':	/* print help */
 				print_help();
+				break;
+
+			case 'y':
+				printf("is %s for a network? %s\n", optarg, is_net(to_addr_ip(optarg)) == 1 ? "yes" : "no");
+				break;
+
+			case 'z':
+				printf("is %s for an interface? %s\n", optarg, is_net(to_addr_ip(optarg)) == 0 ? "yes" : "no");
 				break;
 			
 			case '?':
