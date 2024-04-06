@@ -49,6 +49,10 @@ make uninstall
 
 ## todo
 
+- [ ] structure code:
+	- [ ] rename functions and variables
+	- [ ] add header guards
+	- [ ] combine `core.h` and `core.c` in one header file
 - [ ] Makefile:
 	- [ ] organize the dependancy graph
 - [ ] display:
