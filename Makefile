@@ -1,29 +1,17 @@
 CC=gcc
-CF=-Wall -Wextra -Werror -Wpedantic -Wconversion
-SRC=src
-BLD=build
-MAIN=main.c
+CFLAGS=-Wall
 TARGET=ipcalc
-IDIR=/usr/local/bin
+CORE=src/core.c
+MAIN=src/main.c
 
-all:
-	$(CC) $(CF) -o $(BLD)/$(TARGET) $(SRC)/$(MAIN)
+all: core.o main.o
+	$(CC) core.o main.o -o $(TARGET)
 
-init:
-	scripts/init.sh
+main.o:
+	$(CC) -c $(MAIN) -o main.o
 
-test:
-	$(CC) -o $(BLD)/$(TARGET) $(SRC)/$(MAIN)
-
-run: test
-	clear -x
-	$(BLD)/$(TARGET)
+core.o:
+	$(CC) -c $(CORE) -o core.o
 
 clean:
-	rm $(BLD)/*
-
-install: all
-	cp $(BLD)/$(TARGET) $(IDIR)
-
-uninstall:
-	rm $(IDIR)/$(TARGET)
+	rm ./build/*

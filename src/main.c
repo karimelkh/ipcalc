@@ -1,6 +1,6 @@
-#include "core.c" // this is temporary - later we will build it with `make`
+#include "core.h"
 
-#define OPTIONS "b:d:ho:"
+#define SHORT_OPTS "b:d:ho:"
 
 static struct option long_options[] = {
 /*		name			has_arg					flag	val	*/
@@ -8,11 +8,6 @@ static struct option long_options[] = {
 	{	"bin",			required_argument,	NULL,		'b'	},
 	{	"isnet",		required_argument,	NULL,		'y'	},
 	{	"isint",		required_argument,	NULL,		'z'	},
-//	{	"delete",		required_argument,		0,		0	},
-//	{	"verbose",		no_argument,			0,		0	},
-//	{	"create",		required_argument,		0,		'c'	},
-//	{	"file",			required_argument,		0,		0	},
-//	{	0,				0,						0,		0	}
 };
 
 int main(int argc, char* argv[]) {
@@ -21,9 +16,9 @@ int main(int argc, char* argv[]) {
 		exit(EXIT_FAILURE);
 	}
 	opterr = 0; // disable `getopt` default error messages
-	char opt;
-	while((opt = (char) getopt_long(argc, argv, OPTIONS, long_options, NULL)) != -1) {
-		switch (opt) {
+	char current_opt;
+	while((current_opt = (char) getopt_long(argc, argv, SHORT_OPTS, long_options, NULL)) != -1) {
+		switch (current_opt) {
 			case 'b':	/* get binary */
 				get_bin(optarg);
 				break;

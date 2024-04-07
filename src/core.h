@@ -1,47 +1,31 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <getopt.h>
-#include <stdint.h>
+typedef struct mask nmask;
 
-#define CMD_NAME "ipcalc"
-// #define CMD_DESC "convert between decimal and binary versions of IPv4 and IPv6 addresses"
-#define CMD_DESC "perform some calculations on IP addresses"
-#define CMD_USAGE "usage:\n\t-b, --bin=DEC\tconvert decimal to binary\n\t-d, --dec=BIN\tconvert binary to decimal\n\t-h, --help\tprint this help"
-#define CMD_VER "v0.0"
-#define CMD_AUTH "karimelk"
-#define CMD_REPO "https://github.com/karimelkh/ipcalc)"
+typedef struct addr ipv4_addr;
 
-#define M_OCT 255
-#define M_MASK 32
 
-#define ANSI_RED "\x1b[31m"
-#define ANSI_RES "\x1b[0m"
-
-#define BIN_STR_LEN 8
-
-#define CMP_OCT(x, y) ((x.oct[0] == y.oct[0]) && (x.oct[1] == y.oct[1]) && (x.oct[2] == y.oct[2]) && (x.oct[3] == y.oct[3]))
-
-// print help
 void print_help(void);
 
-// Print ERRor
-void perr(const char* err);
+void log_err(const char*);
 
-// log message to stdout
-void log_msg(char* msg);
+void log_msg(const char*);
 
-// decimal to binary string
-char* utob(unsigned int dec);
+// return the binary of an unsigned int
+char* uint_to_bin(unsigned int);
 
-// decimal ipv4 to binary string
-void get_bin(char* dec_addr);
+// return the binary form of an ipv4 address
+char* ipv4_dec_to_bin(ipv4_addr);
 
+// count how many 1s in an unsigned int
 int count_ones(unsigned int);
 
-// int is_net(addr_ip);
+// check if an ipv4 address is for a network
+int is_network(ipv4_addr);
 
-// void print_ip(addr_ip);
+// check if an ipv4 address is for an interface
+int is_interface(ipv4_addr);
 
-// addr_ip to_ip(char*);
+void print_ipv4(ipv4_addr);
+
+// return ipv4_addr from a string
+ipv4_addr str_to_ipv4(const char*);
 
