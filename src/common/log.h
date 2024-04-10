@@ -27,6 +27,7 @@ void log_msg(char* msg) {
 	printf("%s\n", msg);
 }
 
+// TO MOVE TO ipv4.h
 void print_ip(ipv4_addr ia) {
 	printf("%u.%u.%u.%u", ia.byte[ONE], ia.byte[TWO], ia.byte[TRE], ia.byte[FOR]);
 }
