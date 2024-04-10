@@ -1,7 +1,7 @@
 CC=clang
 CFLAGS=-Wall
 TARGET=ipcalc
-MAIN=src/main.c
+MAIN=main.c
 SRC=src
 BLD=build
 
