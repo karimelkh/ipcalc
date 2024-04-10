@@ -1,17 +1,12 @@
-CC=gcc
+CC=clang
 CFLAGS=-Wall
 TARGET=ipcalc
-CORE=src/core.c
 MAIN=src/main.c
+SRC=src
+BLD=build
 
-all: core.o main.o
-	$(CC) core.o main.o -o $(TARGET)
-
-main.o:
-	$(CC) -c $(MAIN) -o main.o
-
-core.o:
-	$(CC) -c $(CORE) -o core.o
+all:
+	$(CC) $(SRC)/$(MAIN) -o $(BLD)/$(TARGET)
 
 clean:
 	rm ./build/*

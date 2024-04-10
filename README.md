@@ -75,4 +75,4 @@ make uninstall
 - [ ] add some examples
 - [X] make an `ip` struct
 - [X] use `getopt_long` or `getopt_long_only` instead of `getopt`
-
+- [ ] handle errors like a pro

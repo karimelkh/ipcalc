@@ -31,14 +31,14 @@ int main(int argc, char* argv[]) {
 				print_help();
 				break;
 
-			case 'y':
+/*			case 'y':
 				printf("is %s for a network? %s\n", optarg, is_net(to_addr_ip(optarg)) == 1 ? "yes" : "no");
 				break;
 
 			case 'z':
 				printf("is %s for an interface? %s\n", optarg, is_net(to_addr_ip(optarg)) == 0 ? "yes" : "no");
 				break;
-			
+*/			
 			case '?':
 				fprintf(stderr,  "invalid option: %s%c%s\n" , ANSI_RED, optopt, ANSI_RES);
 				print_help();
