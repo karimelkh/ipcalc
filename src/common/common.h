@@ -2,6 +2,7 @@
 #define COMMON_H
 
 #include <stdio.h>	// printf, sscanf,
+#include <stdbool.h> // true, false
 #include <string.h> // strcat,
 #include <stdlib.h> // exit,
 #include <getopt.h>	// getopt,

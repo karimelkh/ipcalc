@@ -24,10 +24,6 @@ int main(int argc, char* argv[]) {
 			case 'b':
 				// ipc_bin(optarg);
 				ip_ver = atoi(optarg);
-				if (ip_ver != 4 && ip_ver != 6) {
-					fprintf(stderr, "Invalid IP version: %d\n", ip_ver);
-					exit(EXIT_FAILURE);
-				}
 				if (optind >= argc) {
 					fprintf(stderr, "Expected argument after -b option\n");
 					exit(EXIT_FAILURE);
@@ -35,7 +31,7 @@ int main(int argc, char* argv[]) {
 				ipc_bin(argv[optind], ip_ver);
 				optind++; // Move to the next argument after the IP address
 				break;
-/*
+
 			case 'd':
 				log_msg("you chose 'd'");
 				break;
@@ -45,15 +41,15 @@ int main(int argc, char* argv[]) {
 				break;
 
 			case 'y':
-				// ipc_isnet(optarg);
-				printf("is %s for a network? %s\n", optarg, is_net(to_addr_ip(optarg)) == 1 ? "yes" : "no");
+				ipc_isnet(optarg);
+				// printf("is %s for a network? %s\n", optarg, is_net(to_addr_ip(optarg)) == 1 ? "yes" : "no");
 				break;
 
 			case 'z':
 				// ipc_isint(optarg);
-				printf("is %s for an interface? %s\n", optarg, is_net(to_addr_ip(optarg)) == 0 ? "yes" : "no");
+				// printf("is %s for an interface? %s\n", optarg, is_net(to_addr_ip(optarg)) == 0 ? "yes" : "no");
 				break;
-*/
+
 			case '?':
 				fprintf(stderr,  "invalid option: %s%c%s\n" , ANSI_RED, optopt, ANSI_RES);
 				log_help();
