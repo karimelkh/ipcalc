@@ -1,4 +1,5 @@
-CC=clang
+CC=gcc
+# CC=clang
 CFLAGS=-Wall
 TARGET=ipcalc
 MAIN=main.c
