@@ -10,8 +10,8 @@ and do some operations on IP addresses, check [features](#features) for more inf
 
 ### requirements
 
-* **make** - to build source code
-* ...
+* make
+* gcc or clang
 
 
 ### installation
@@ -79,4 +79,8 @@ make uninstall
 - [ ] add some examples
 - [X] make an `ip` struct
 - [X] use `getopt_long` or `getopt_long_only` instead of `getopt`
-
+- [ ] handle errors like a pro
+- [ ] think about making the while loop in `main` as the following steps:
+	1. **check** for option
+	2. **handle** option
+	3. **log** errors

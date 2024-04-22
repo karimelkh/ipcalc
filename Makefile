@@ -1,29 +1,17 @@
 CC=gcc
-CF=-Wall -Wextra -Werror -Wpedantic -Wconversion
+# CC=clang
+CFLAGS=-Wall
+TARGET=ipcalc
+MAIN=main.c
 SRC=src
 BLD=build
-MAIN=main.c
-TARGET=ipcalc
-IDIR=/usr/local/bin
 
 all:
-	$(CC) $(CF) -o $(BLD)/$(TARGET) $(SRC)/$(MAIN)
+	$(CC) $(CFALGS) $(SRC)/$(MAIN) -o $(BLD)/$(TARGET)
 
-init:
-	scripts/init.sh
+debug:
+	$(CC) -g $(SRC)/$(MAIN) -o $(BLD)/$(TARGET)
 
-test:
-	$(CC) -o $(BLD)/$(TARGET) $(SRC)/$(MAIN)
-
-run: test
-	clear -x
-	$(BLD)/$(TARGET)
 
 clean:
-	rm $(BLD)/*
-
-install: all
-	cp $(BLD)/$(TARGET) $(IDIR)
-
-uninstall:
-	rm $(IDIR)/$(TARGET)
+	rm ./build/*

@@ -1,54 +1,63 @@
-#include "core.c" // this is temporary - later we will build it with `make`
+#include "ipc.h"
 
-#define OPTIONS "b:d:ho:"
+#define VALID_SHORT_OPTS "b:d:ho:"
 
 static struct option long_options[] = {
-/*		name			has_arg					flag	val	*/
+	/*	name			has_arg				flag		val	*/
 	{	"help",			no_argument,		NULL,		'h'	},
 	{	"bin",			required_argument,	NULL,		'b'	},
 	{	"isnet",		required_argument,	NULL,		'y'	},
 	{	"isint",		required_argument,	NULL,		'z'	},
-//	{	"delete",		required_argument,		0,		0	},
-//	{	"verbose",		no_argument,			0,		0	},
-//	{	"create",		required_argument,		0,		'c'	},
-//	{	"file",			required_argument,		0,		0	},
-//	{	0,				0,						0,		0	}
 };
 
 int main(int argc, char* argv[]) {
 	if(argc == 1) {
-		print_help();
+		log_help();
 		exit(EXIT_FAILURE);
 	}
-	opterr = 0; // disable `getopt` default error messages
-	char opt;
-	while((opt = (char) getopt_long(argc, argv, OPTIONS, long_options, NULL)) != -1) {
-		switch (opt) {
-			case 'b':	/* get binary */
-				get_bin(optarg);
+
+	char current_opt;
+	int ip_ver = 0;
+
+	while((current_opt = (char) getopt_long(argc, argv, VALID_SHORT_OPTS, long_options, NULL)) != -1) {
+		switch (current_opt) {
+			case 'b':
+				ip_ver = atoi(optarg);
+				if (optind >= argc) {
+					fprintf(stderr, "Expected argument after -b option\n");
+					exit(EXIT_FAILURE);
+				}
+				ipc_bin(argv[optind], ip_ver);
+				optind++; // Move to the next argument after the IP address
 				break;
-	
-			case 'd':	/* get decimal */
+
+			case 'd':
 				log_msg("you chose 'd'");
 				break;
-		
-			case 'h':	/* print help */
-				print_help();
+
+			case 'h':
+				log_help();
 				break;
 
 			case 'y':
-				printf("is %s for a network? %s\n", optarg, is_net(to_addr_ip(optarg)) == 1 ? "yes" : "no");
+				
+				char* ip_address = (char*) malloc(100 * sizeof(char));
+				strcpy(ip_address, optarg);
+				opt_got_arg(argc, argv, "s:");
+				printf("ip = %s\nsubnet = %s\n", ip_address, optarg);
+				ipc_isnet(ip_address, optarg);
 				break;
 
 			case 'z':
-				printf("is %s for an interface? %s\n", optarg, is_net(to_addr_ip(optarg)) == 0 ? "yes" : "no");
+				// ipc_isint(optarg);
+				// printf("is %s for an interface? %s\n", optarg, is_net(to_addr_ip(optarg)) == 0 ? "yes" : "no");
 				break;
-			
+
 			case '?':
 				fprintf(stderr,  "invalid option: %s%c%s\n" , ANSI_RED, optopt, ANSI_RES);
-				print_help();
+				log_help();
 				break;
-			
+
 			default:
 				break;
 		}
