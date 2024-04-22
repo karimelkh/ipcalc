@@ -53,16 +53,31 @@ void ipc_bin(const char *ia, int iv) {
  * @see
  * @return void
  * */
+// NOTE: str_subnet is in CIDR form for now. DEAL WITH MULTIPLE FORMS LATER
 // TODO: manage to get the subnet mask that will be used to get the network address
 // TODO: be more descriptive in the last printf
-void ipc_isnet(const char *str_ia) {
+void ipc_isnet(const char *str_ia, const char *str_subnet) {
 	// check if `str_ia` is valid ipv4 address
 	// if (!v4_is_valid_addr(str_ia))
 		// print ERROR
 	// convert string `str_ia` to struct `ip_addr ia`
+	// and assign `str_subnet` to `ia.subnet_m.cidr`
+	// and transform from CIDR to BYTES form
 	ip_addr ia = v4_str_to_ip(str_ia);
+	ERRINFO(" ");
+	printf("ia.byte: ");
+	v4_print_bytes(ia.byte);
+	ia.subnet_m.cidr = atoi(str_subnet);
+	// printf("ipc_isnet:cidr = %d", ia.subnet_m.cidr);
+	v4_cidr_to_bytes(ia.subnet_m.cidr, ia.subnet_m.byte);
+	ERRINFO(" ");
+	printf("ia.subnet_m.byte: ");
+	v4_print_bytes(ia.subnet_m.byte);
 	// get `nia`, the network address of `ia`
 	ip_addr nia = v4_get_net_addr(ia.byte, ia.subnet_m.byte);
+	ERRINFO(" ");
+	printf("nia.byte: ");
+	v4_print_bytes(nia.byte);
 	// compare between `ia` and `nia`
 	// print results
 	printf("%s\n", v4_addr_cmp(ia, nia) ? "Yes" : "No");

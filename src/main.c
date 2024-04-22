@@ -1,6 +1,6 @@
 #include "ipc.h"
 
-#define SHORT_OPTS "b:d:ho:"
+#define VALID_SHORT_OPTS "b:d:ho:"
 
 static struct option long_options[] = {
 	/*	name			has_arg				flag		val	*/
@@ -15,14 +15,13 @@ int main(int argc, char* argv[]) {
 		log_help();
 		exit(EXIT_FAILURE);
 	}
-	
+
 	char current_opt;
 	int ip_ver = 0;
 
-	while((current_opt = (char) getopt_long(argc, argv, SHORT_OPTS, long_options, NULL)) != -1) {
+	while((current_opt = (char) getopt_long(argc, argv, VALID_SHORT_OPTS, long_options, NULL)) != -1) {
 		switch (current_opt) {
 			case 'b':
-				// ipc_bin(optarg);
 				ip_ver = atoi(optarg);
 				if (optind >= argc) {
 					fprintf(stderr, "Expected argument after -b option\n");
@@ -35,14 +34,18 @@ int main(int argc, char* argv[]) {
 			case 'd':
 				log_msg("you chose 'd'");
 				break;
-		
+
 			case 'h':
 				log_help();
 				break;
 
 			case 'y':
-				ipc_isnet(optarg);
-				// printf("is %s for a network? %s\n", optarg, is_net(to_addr_ip(optarg)) == 1 ? "yes" : "no");
+				
+				char* ip_address = (char*) malloc(100 * sizeof(char));
+				strcpy(ip_address, optarg);
+				opt_got_arg(argc, argv, "s:");
+				printf("ip = %s\nsubnet = %s\n", ip_address, optarg);
+				ipc_isnet(ip_address, optarg);
 				break;
 
 			case 'z':
@@ -54,7 +57,7 @@ int main(int argc, char* argv[]) {
 				fprintf(stderr,  "invalid option: %s%c%s\n" , ANSI_RED, optopt, ANSI_RES);
 				log_help();
 				break;
-			
+
 			default:
 				break;
 		}

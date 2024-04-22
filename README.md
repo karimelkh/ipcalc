@@ -10,8 +10,8 @@ and do some operations on IP addresses, check [features](#features) for more inf
 
 ### requirements
 
-* **make** - to build source code
-* ...
+* make
+* gcc or clang
 
 
 ### installation

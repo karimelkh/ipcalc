@@ -20,12 +20,51 @@ struct ipv4_addr {
 typedef struct netmask nmask;
 typedef struct ipv4_addr ip_addr;
 
+bool v4_print_bytes(uint8_t byte[V4_BYTE_SIZE]) {
+	for(int i=0; i<V4_BYTE_SIZE; i++) {
+			printf("%d", byte[i]);
+		if(i < V4_BYTE_SIZE - 1)
+			printf(".");
+	}
+	printf("\n");
+}
+
+const short int lookup_cidr_bytes[33] = {
+//	0		1		2		3		4		5		6		7
+	0,		128,	192,	224,	240,	248,	252,	254,
+
+//	8		9		10		11		12		13		14		15
+	255,	383,	447,	479,	495,	503,	507,	509,
+
+//	16		17		18		19		20		21		22		23
+	510,	638,	702,	734,	750,	758,	762,	764,
+
+//	24		25		26		27		28		29		30		31
+	765,	893,	957,	989,	1005,	1013,	1017,	1019,
+
+//	32
+	1020
+};
+
+void v4_cidr_to_bytes(const int cidr, uint8_t bytes[V4_BYTE_SIZE]) {
+	int bytes_sum = lookup_cidr_bytes[cidr];
+	for(int i=0; i<V4_BYTE_SIZE; i++) {
+		if(bytes_sum > V4_MAX_BYTE_VAL)
+			bytes[i] = V4_MAX_BYTE_VAL;
+		else {
+			bytes[i] = bytes_sum;
+			return;
+		}
+		bytes_sum -= V4_MAX_BYTE_VAL;
+	}
+}
+
 // TODO: fihish implementation after basic functionality
 bool v4_is_valid_addr(const char *str_ia) {
 	// check if `str_ia` is 4 fields separated by '.'
 	// check if the fields are: >= 0 && < 256
 	// check if it has CIDR field (/24)
-		// check if the CIDR <= 32 (max CIDR value)
+	// check if the CIDR <= 32 (max CIDR value)
 	return true;
 }
 
@@ -59,7 +98,7 @@ ip_addr v4_str_to_ip(const char *str_ia) {
 			0 // CIDR
 		}
 	};
-	sscanf(str_ia, "%hhu.%hhu.%hhu.%hhu", byte[ONE], byte[TWO], byte[THR], byte[FOR]);
+	sscanf(str_ia, "%hhu.%hhu.%hhu.%hhu", &byte[ONE], &byte[TWO], &byte[THR], &byte[FOR]);
 	if(!v4_are_valid_bytes(byte))
 		fprintf(stderr, "Invalid IPv4 address\n");
 	else
@@ -76,9 +115,9 @@ ip_addr v4_get_net_addr(const uint8_t addr[V4_BYTE_SIZE], const uint8_t subnet[V
 	return net_addr;
 }
 
-bool v4_addr_cmp(ip_addr fia, ip_addr sia) {
+bool v4_addr_cmp(ip_addr first_ia, ip_addr second_ia) {
 	for(int i=0; i<V4_BYTE_SIZE; i++) {
-		if(fia.byte[i] != sia.byte[i])
+		if(first_ia.byte[i] != second_ia.byte[i])
 			return false;
 	}
 	return true;
