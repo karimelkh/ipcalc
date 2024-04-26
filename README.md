@@ -48,7 +48,7 @@ make uninstall
 - [ ] remove replacable `fprintf()` with `log_err()`
 - [ ] solve all the warnings resulting from make
 - [ ] **document**: the *'core/ipv4.h'* functions, ...
-- [ ] make a script that remove comments from source code
+- [X] make a script that remove comments from source code
 - [X] rename functions and variables
 - [ ] **Makefile:** organize the dependancy graph
 - [X] **feat:** is network address?
