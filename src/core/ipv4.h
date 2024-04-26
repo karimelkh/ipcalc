@@ -1,3 +1,24 @@
+#/*
+ * ipv4 addresses related functions, ...
+ *	struct ipv4_addr
+ *	struct netmask
+ *	
+ *	typedef struct netmask nmask
+ *	typedef struct ipv4_addr ip_addr
+ *	
+ *	function_name			description
+ *	v4_print_bytes()		...
+ *	v4_cidr_to_bytes()		...
+ *	v4_is_valid_addr()		...
+ *	v4_is_valid_byte()		...
+ *	v4_are_valid_bytes()	...
+ *	v4_bytes_cpy()			...
+ *	v4_addr_cpy()			...
+ *	v4_str_to_ip()			...
+ *	v4_addr_cmp()			...
+ *	v4_get_net_addr()		...
+ **/
+
 #ifndef IPV4_H 
 #define IPV4_H
 
@@ -20,7 +41,7 @@ struct ipv4_addr {
 typedef struct netmask nmask;
 typedef struct ipv4_addr ip_addr;
 
-bool v4_print_bytes(uint8_t byte[V4_BYTE_SIZE]) {
+void v4_print_bytes(uint8_t byte[V4_BYTE_SIZE]) {
 	for(int i=0; i<V4_BYTE_SIZE; i++) {
 			printf("%d", byte[i]);
 		if(i < V4_BYTE_SIZE - 1)
@@ -52,7 +73,7 @@ void v4_cidr_to_bytes(const int cidr, uint8_t bytes[V4_BYTE_SIZE]) {
 		if(bytes_sum > V4_MAX_BYTE_VAL)
 			bytes[i] = V4_MAX_BYTE_VAL;
 		else {
-			bytes[i] = bytes_sum;
+			bytes[i] = (uint8_t) bytes_sum;
 			return;
 		}
 		bytes_sum -= V4_MAX_BYTE_VAL;

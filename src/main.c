@@ -40,20 +40,19 @@ int main(int argc, char* argv[]) {
 				break;
 
 			case 'y':
-				
-				char* ip_address = (char*) malloc(100 * sizeof(char));
+			case 'z':
+				char* ip_address = (char*) malloc(100 * sizeof(char)); // change this 100 (random value)
 				strcpy(ip_address, optarg);
 				opt_got_arg(argc, argv, "s:");
-				printf("ip = %s\nsubnet = %s\n", ip_address, optarg);
-				ipc_isnet(ip_address, optarg);
-				break;
-
-			case 'z':
-				// ipc_isint(optarg);
-				// printf("is %s for an interface? %s\n", optarg, is_net(to_addr_ip(optarg)) == 0 ? "yes" : "no");
+				if(current_opt == 'y')
+					ipc_isnet(ip_address, optarg);
+				else
+					ipc_isint(ip_address, optarg);
+				free(ip_address);
 				break;
 
 			case '?':
+				// to enhance with `log_err()` next commit
 				fprintf(stderr,  "invalid option: %s%c%s\n" , ANSI_RED, optopt, ANSI_RES);
 				log_help();
 				break;

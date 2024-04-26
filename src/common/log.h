@@ -1,10 +1,19 @@
+/*
+ * logs-related functions, ...
+ * log_help()
+ * log_msg()
+ * log_err
+ *
+ * */
 #ifndef LOG_H
 #define LOG_H
 
 /* help message info */
 #define CMD_NAME	"ipcalc"
 #define CMD_DESC	"perform some calculations on IP addresses"
-#define CMD_USAGE	"usage:\n\t-b, --bin=DEC\tconvert decimal to binary\n\t-d, --dec=BIN\tconvert binary to decimal\n\t-h, --help\tprint this help"
+#define CMD_USAGE	"usage:\n\t-b, --bin=VER\tconvert decimal to binary\n\t\
+--isnet=ADDR\tcheck if it is a network address\n\t--isint=ADDR\tcheck if it is\
+an interface address\n\t-h, --help\tprint this help"
 #define CMD_VER		"v0.0"
 #define CMD_AUTH	"karimelk"
 #define	CMD_REPO	"https://github.com/karimelkh/ipcalc)"

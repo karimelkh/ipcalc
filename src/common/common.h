@@ -1,3 +1,13 @@
+/*
+ * common includes and functions, ...
+ *	opt_got_arg()
+ *	
+ *	
+ *	
+ *	
+ *	
+ *	
+ * */
 #ifndef COMMON_H
 #define COMMON_H
 
