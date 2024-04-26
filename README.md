@@ -43,14 +43,15 @@ make uninstall
 **Notes:**
 * `-b` can be used multiple times in a single command
 
-## todo
-
-- [ ] remove replacable `fprintf()` with `log_err()`
-- [ ] solve all the warnings resulting from make
+## TODO
+### Document
 - [ ] **document**: the *'core/ipv4.h'* functions, ...
-- [X] make a script that remove comments from source code
-- [X] rename functions and variables
+
+### Makefile
+- [ ] **Makefile:** add options: `install` and `uninstall`
 - [ ] **Makefile:** organize the dependancy graph
+
+### Features
 - [X] **feat:** is network address?
 - [X] **feat:** network address
 - [ ] **feat:** usable host ip range
@@ -65,6 +66,12 @@ make uninstall
 - [ ] **feat:** short notation, ex: `192.168.1.1/24`
 - [ ] **feat:** all possible addresses for the ip address
 - [ ] **feat:** table of the number of hosts per subnet
+
+### Other
+- [ ] remove replacable `fprintf()` with `log_err()`
+- [ ] solve all the warnings resulting from make
+- [X] make a script that remove comments from source code
+- [X] rename functions and variables
 - [ ] use the [belformat](https://github.com/Artiom-Astashonak/belformat) library
 - [ ] add some examples to that **README**
 - [X] make an `ip` struct
