@@ -35,9 +35,11 @@ make uninstall
 > the only two options that works are **-b** and **-h**
 
 ```
--b,	--bin=DEC	convert decimal to binary
--d,	--dec=BIN	convert binary to decimal
--h,	--help		print this help
+-b, --bin=VER	convert decimal to binary
+--isnet=ADDR	check if it is a network address
+--isint=ADDR	check if it isan interface address
+-t, --type		network type: interface|network
+-h, --help		print this help
 ```
 
 **Notes:**
@@ -56,13 +58,14 @@ make uninstall
 
 ### Document
 - [ ] **document**: the *'core/ipv4.h'* functions, ...
+- [ ] **document**: the `ipc_type()` function
 
 ### Makefile
 - [ ] **Makefile:** add options: `install` and `uninstall`
 - [ ] **Makefile:** organize the dependancy graph
 
 ### Features
-- [ ] **feat:** is network or interface ip address? (`--isnet`, `--isint`, `--type*`)
+- [X] **feat:** is network or interface ip address? (`--isnet`, `--isint`, `--type*`)
 - [ ] **feat:** network address
 - [ ] **feat:** broadcast address
 - [ ] **feat:** usable host ip range
