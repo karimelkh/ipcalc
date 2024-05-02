@@ -94,3 +94,4 @@ make uninstall
 	1. **check** for option
 	2. **handle** option
 	3. **log** errors
+- [ ] making some global options options subcommands, like `--bin` will be used without dashes (`bin`).
