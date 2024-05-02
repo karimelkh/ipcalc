@@ -1,6 +1,6 @@
 #include "ipc.h"
 
-#define VALID_SHORT_OPTS "b:d:ho:"
+#define VALID_SHORT_OPTS "b:h"
 
 static struct option long_options[] = {
 	/*	name			has_arg				flag		val	*/
@@ -32,10 +32,6 @@ int main(int argc, char* argv[]) {
 				// `ipcalc --bin 5 192.0.0.0`
 				ipc_bin(argv[optind], ip_ver);
 				optind++; // Move to the next argument after the IP address
-				break;
-
-			case 'd':
-				log_msg("you chose 'd'");
 				break;
 
 			case 'h':
