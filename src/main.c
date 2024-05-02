@@ -1,11 +1,12 @@
 #include "ipc.h"
 
-#define VALID_SHORT_OPTS "b:h"
+#define VALID_SHORT_OPTS "b:ht:"
 
 static struct option long_options[] = {
 	/*	name			has_arg				flag		val	*/
 	{	"help",			no_argument,		NULL,		'h'	},
 	{	"bin",			required_argument,	NULL,		'b'	},
+	{	"type",			required_argument,	NULL,		't'	},
 	{	"isnet",		required_argument,	NULL,		'y'	},
 	{	"isint",		required_argument,	NULL,		'z'	},
 };
@@ -40,13 +41,16 @@ int main(int argc, char* argv[]) {
 
 			case 'y':
 			case 'z':
+			case 't':
 				char* ip_address = (char*) malloc(100 * sizeof(char)); // change this 100 (random value)
 				strcpy(ip_address, optarg);
 				opt_got_arg(argc, argv, "s:");
 				if(current_opt == 'y')
 					ipc_isnet(ip_address, optarg);
-				else
+				else if(current_opt == 'z')
 					ipc_isint(ip_address, optarg);
+				else
+					ipc_type(ip_address, optarg);
 				free(ip_address);
 				break;
 
