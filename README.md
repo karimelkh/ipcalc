@@ -44,6 +44,16 @@ make uninstall
 * `-b` can be used multiple times in a single command
 
 ## TODO
+### Fixes
+- [ ] seg fault when using `--bin` with invalid ip version:
+	```sh
+	./build/ipcalc --bin=9 192.0.1.0
+	```
+	and another one when using `--isnet` without `-s`:
+	```sh
+	ipcalc --isnet 192.0.0.0
+	```
+
 ### Document
 - [ ] **document**: the *'core/ipv4.h'* functions, ...
 
@@ -52,15 +62,16 @@ make uninstall
 - [ ] **Makefile:** organize the dependancy graph
 
 ### Features
-- [X] **feat:** is network address?
-- [X] **feat:** network address
-- [ ] **feat:** usable host ip range
+- [ ] **feat:** is network or interface ip address? (`--isnet`, `--isint`, `--type*`)
+- [ ] **feat:** network address
 - [ ] **feat:** broadcast address
+- [ ] **feat:** usable host ip range
 - [ ] **feat:** total number of hosts
 - [ ] **feat:** number of usable hosts
 - [ ] **feat:** subnet mask (for example *'/16'* <-> *'255.255.0.0'*)
 - [ ] **feat:** wildcard mask
-- [X] **feat:** binary ip add **feat:** ip class
+- [X] **feat:** binary ip (`--bin`)
+- [ ] **feat:** ip class
 - [ ] **feat:** **CIDR** notation (*/24*) of the subnet mask (*255.255.255.0*)
 - [ ] **feat:** ip type: **public** or **private**
 - [ ] **feat:** short notation, ex: `192.168.1.1/24`
@@ -68,9 +79,11 @@ make uninstall
 - [ ] **feat:** table of the number of hosts per subnet
 
 ### Other
-- [ ] remove replacable `fprintf()` with `log_err()`
-- [ ] solve all the warnings resulting from make
+- [X] remove replacable `fprintf()` with `log_err()`
+- [X] make `log_err()` accept multiple arguments like `printf()` family
+- [ ] solve all the warnings resulting from `make`
 - [X] make a script that remove comments from source code
+- [ ] **no comments script**: deal with links, and other exceptions
 - [X] rename functions and variables
 - [ ] use the [belformat](https://github.com/Artiom-Astashonak/belformat) library
 - [ ] add some examples to that **README**
