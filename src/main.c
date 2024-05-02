@@ -25,8 +25,11 @@ int main(int argc, char* argv[]) {
 				ip_ver = atoi(optarg);
 				if (optind >= argc) {
 					fprintf(stderr, "Expected argument after -b option\n");
+//					log_err(1, "Expected argument after -b option");
 					exit(EXIT_FAILURE);
 				}
+				// seg fault here when using incorrect ip_ver value:
+				// `ipcalc --bin 5 192.0.0.0`
 				ipc_bin(argv[optind], ip_ver);
 				optind++; // Move to the next argument after the IP address
 				break;
@@ -52,7 +55,7 @@ int main(int argc, char* argv[]) {
 				break;
 
 			case '?':
-				// to enhance with `log_err()` next commit
+				// to enhance with `log_err()` next commit -- WAITING FOR OTHER COMMIT --
 				fprintf(stderr,  "invalid option: %s%c%s\n" , ANSI_RED, optopt, ANSI_RES);
 				log_help();
 				break;

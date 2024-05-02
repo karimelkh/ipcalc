@@ -2,9 +2,10 @@
  * logs-related functions, ...
  * log_help()
  * log_msg()
- * log_err
- *
+ * log_err()
+ * log_err_info()
  * */
+
 #ifndef LOG_H
 #define LOG_H
 
@@ -34,8 +35,29 @@ void log_msg(char* msg) {
 	printf("%s\n", msg);
 }
 
-void log_err(const char* err) {
-	fprintf(stderr, "%s%s\n%s", ANSI_RED, err, ANSI_RES);
+// TODO: make `log_err()` and `log_err_info()` to accept formatting, if possible
+void log_err(int wc, ...) {
+	va_list ap;
+	va_start(ap, wc);
+	fprintf(stderr, ANSI_RED);
+	for(int i=0; i<wc; i++)
+		fprintf(stderr, "%s ", va_arg(ap, char*));
+	fprintf(stderr, ANSI_RES);
+	va_end(ap);
+	fprintf(stderr, "\n");
+}
+
+// TODO: find a way to make info related to where call is (using a macro, ...)
+void log_err_info(int wc, ...) {
+	va_list ap;
+	va_start(ap, wc);
+	// fprintf(stderr, "%s:%d\t\t%s\t\t", __FILE__, __LINE__, __func__);
+	fprintf(stderr, ANSI_RED);
+	for(int i=0; i<wc; i++)
+		fprintf(stderr, "%s ", va_arg(ap, char*));
+	fprintf(stderr, ANSI_RES);
+	va_end(ap);
+	fprintf(stderr, "\n");
 }
 
 // TO MOVE TO ipv4.h

@@ -29,6 +29,7 @@ void ipc_bin(const char *ia, int iv) {
 	if (iv == 4) {
 		if (inet_pton(AF_INET, ia, &ipv4) != 1) {
 			fprintf(stderr, "Invalid IPv4 address: %s\n", ia);
+//			log_err(2, "Invalid IPv4 address: ", ia);
 			exit(EXIT_FAILURE);
 		}
 		for (int i = 0; i < 4; i++) {
@@ -38,6 +39,7 @@ void ipc_bin(const char *ia, int iv) {
 	} else if (iv == 6) {
 		if (inet_pton(AF_INET6, ia, &ipv6) != 1) {
 			fprintf(stderr, "Invalid IPv6 address: %s\n", ia);
+//			log_err(2, "Invalid IPv6 address: ", ia);
 			exit(EXIT_FAILURE);
 		}
 		for (int i = 0; i < 16; i++) {
@@ -46,6 +48,7 @@ void ipc_bin(const char *ia, int iv) {
 		printf("\n");
 	} else {
 		fprintf(stderr, "Invalid IP version: %d\n", iv);
+//		log_err(2, "Invalid IP version: ", iv);
 		exit(EXIT_FAILURE);
 	}
 }

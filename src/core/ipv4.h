@@ -122,6 +122,7 @@ ip_addr v4_str_to_ip(const char *str_ia) {
 	sscanf(str_ia, "%hhu.%hhu.%hhu.%hhu", &byte[ONE], &byte[TWO], &byte[THR], &byte[FOR]);
 	if(!v4_are_valid_bytes(byte))
 		fprintf(stderr, "Invalid IPv4 address\n");
+//		log_err(1, "Invalid IPv4 address");
 	else
 		v4_bytes_cpy(ia.byte, byte);
 	return ia;

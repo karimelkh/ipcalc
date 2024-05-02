@@ -19,6 +19,7 @@
 #include <stdint.h>	// uint8_t
 #include <arpa/inet.h> // inet_pton
 #include <netinet/in.h> // struct in_addr, struct in6_addr
+#include <stdarg.h> // va_list, va_start, va_arg, va_end
 
 #define ERRINFO(str) printf("%s:%d:%s: %s\n", __FILE__, __LINE__, __func__, str)
 
