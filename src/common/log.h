@@ -12,10 +12,13 @@
 /* help message info */
 #define CMD_NAME	"ipcalc"
 #define CMD_DESC	"perform some calculations on IP addresses"
-#define CMD_USAGE	"usage:\n\t-b, --bin=VER\tconvert decimal to binary\n\t\
---isnet=ADDR\tcheck if it is a network address\n\t--isint=ADDR\tcheck if it is\
-an interface address\n\t-t, --type\tnetwork type: interface|network\n\t\
--h, --help\tprint this help"
+#define CMD_USAGE	"usage:\n\
+\t-b, --bin\tconvert decimal to binary\n\
+\t-t, --type\tnetwork type: INTERFACE or NETWORK\n\
+\t-n, --net\tget network address\n\
+\t-h, --help\tprint this help\n\
+\t--isnet\tcheck if it is a network address\n\
+\t--isint\tcheck if it is an interface address"
 #define CMD_VER		"v0.0"
 #define CMD_AUTH	"karimelk"
 #define	CMD_REPO	"https://github.com/karimelkh/ipcalc"

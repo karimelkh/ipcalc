@@ -38,8 +38,8 @@ make uninstall
 -b, --bin=VER	convert decimal to binary
 --isnet=ADDR	check if it is a network address
 --isint=ADDR	check if it isan interface address
--t, --type		network type: interface|network
--h, --help		print this help
+-t, --type	network type: interface|network
+-h, --help	print this help
 ```
 
 **Notes:**
