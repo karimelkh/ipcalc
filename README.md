@@ -31,19 +31,18 @@ make uninstall
 
 
 ### available options
-> [!NOTE]
-> the only two options that works are **-b** and **-h**
 
 ```
--b, --bin=VER	convert decimal to binary
---isnet=ADDR	check if it is a network address
---isint=ADDR	check if it isan interface address
--t, --type	network type: interface|network
--h, --help	print this help
+-b, --bin       convert decimal to binary
+-t, --type      network type: INTERFACE or NETWORK
+-n, --net       get network address
+-h, --help      print this help
+--isnet check if it is a network address
+--isint check if it is an interface address
 ```
 
 **Notes:**
-* `-b` can be used multiple times in a single command
+* `-b`, `-n`, and `-t` can be used multiple times in a single command
 
 ## TODO
 ### Fixes
@@ -66,7 +65,7 @@ make uninstall
 
 ### Features
 - [X] **feat:** is network or interface ip address? (`--isnet`, `--isint`, `--type*`)
-- [ ] **feat:** network address
+- [X] **feat:** network address
 - [ ] **feat:** broadcast address
 - [ ] **feat:** usable host ip range
 - [ ] **feat:** total number of hosts
