@@ -36,9 +36,9 @@ make uninstall
 -b, --bin       convert decimal to binary
 -t, --type      network type: INTERFACE or NETWORK
 -n, --net       get network address
--h, --help      print this help
---isnet check if it is a network address
---isint check if it is an interface address
+-h, --help		print this help
+--isnet check	if it is a network address
+--isint check	if it is an interface address
 ```
 
 **Notes:**

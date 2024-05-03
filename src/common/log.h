@@ -17,8 +17,8 @@
 \t-t, --type\tnetwork type: INTERFACE or NETWORK\n\
 \t-n, --net\tget network address\n\
 \t-h, --help\tprint this help\n\
-\t--isnet\tcheck if it is a network address\n\
-\t--isint\tcheck if it is an interface address"
+\t--isnet\t\tcheck if it is a network address\n\
+\t--isint\t\tcheck if it is an interface address"
 #define CMD_VER		"v0.0"
 #define CMD_AUTH	"karimelk"
 #define	CMD_REPO	"https://github.com/karimelkh/ipcalc"
