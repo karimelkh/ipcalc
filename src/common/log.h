@@ -18,7 +18,7 @@ an interface address\n\t-t, --type\tnetwork type: interface|network\n\t\
 -h, --help\tprint this help"
 #define CMD_VER		"v0.0"
 #define CMD_AUTH	"karimelk"
-#define	CMD_REPO	"https://github.com/karimelkh/ipcalc)"
+#define	CMD_REPO	"https://github.com/karimelkh/ipcalc"
 
 // TO MOVE TO ipv4.h
 #define MAX_BYTE_VAL 255
