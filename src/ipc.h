@@ -4,6 +4,7 @@
  *		ipc_isnet()
  *		ipc_isint()
  *		ipc_type()
+ *		ipc_net()
  **/
 
 #ifndef IPC_H
@@ -117,6 +118,15 @@ void ipc_type(const char *str_ia, const char *str_subnet) {
 	v4_cidr_to_bytes(ia.subnet_m.cidr, ia.subnet_m.byte);
 	ip_addr nia = v4_get_net_addr(ia.byte, ia.subnet_m.byte);
 	printf("%s\n", !v4_addr_cmp(ia, nia) ? "interface" : "network");
+}
+
+/**/
+void ipc_net(const char *str_ia, const char *str_subnet) {
+	ip_addr ia = v4_str_to_ip(str_ia);
+	ia.subnet_m.cidr = atoi(str_subnet);
+	v4_cidr_to_bytes(ia.subnet_m.cidr, ia.subnet_m.byte);
+	ip_addr nia = v4_get_net_addr(ia.byte, ia.subnet_m.byte);
+	v4_print_bytes(nia.byte);
 }
 
 #endif // IPC_H
