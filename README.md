@@ -96,4 +96,7 @@ make uninstall
 	1. **check** for option
 	2. **handle** option
 	3. **log** errors
-- [ ] making some global options options subcommands, like `--bin` will be used without dashes (`bin`).
+- [ ] making some global options options subcommands, like `--bin` will be used
+		without dashes (`bin`).
+- [ ] provide some other optons like `--time`, `--verbose`, ...
+		and use bitwise operators to select them
