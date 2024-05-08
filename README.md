@@ -81,6 +81,7 @@ make uninstall
 - [ ] **feat:** table of the number of hosts per subnet
 
 ### Other
+- [ ] use `/` instead of `-s`
 - [X] remove replacable `fprintf()` with `log_err()`
 - [X] make `log_err()` accept multiple arguments like `printf()` family
 - [ ] solve all the warnings resulting from `make`
